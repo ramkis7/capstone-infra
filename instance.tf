@@ -5,7 +5,7 @@ resource "aws_instance" "jenkins" {
   vpc_security_group_ids = [aws_security_group.devops_sg.id]
 
   root_block_device {
-    volume_size = 30  # GB
+    volume_size = 50  # GB
     volume_type = "gp3"
   }
 
