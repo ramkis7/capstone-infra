@@ -29,8 +29,15 @@ docker run -d --name sonarqube --restart unless-stopped \
   -v sonarqube_logs:/opt/sonarqube/logs \
   sonarqube:lts-community
 
+# Install Minikube
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+# Install kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
 # Node.js & Nginx
 curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -
 yum install -y nodejs nginx
 systemctl enable --now nginx
-
